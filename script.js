@@ -87,6 +87,8 @@ var calendario3 = ` <p class="dia">Seg</p>
 <p></p>
 <p></p>`;
 
+// comentário aleatório
+
 var calendario4 = `<p class="dia">Seg</p>
 <p class="dia">Ter</p>
 <p class="dia">Qua</p>

@@ -177,6 +177,7 @@ var calendario5 = ` <p class="dia">Seg</p>
 
 var array_calendario = [0,calendario2, calendario3, calendario4,calendario5];
 var array_soma = [1,2,4,8,16];
+var clique_permitido = true;
 function laco(n){ 
     return new Promise (function(resolve){
        setTimeout(resolve, n*1000
@@ -194,30 +195,35 @@ var dia = 0;
 
 
 async function escolha(resposta){
-    if (resposta){
-        dia += array_soma[cont];    
-    }
-    cont++;
-    if (cont < 5){        
-            calendario.innerHTML = " <h2>  Trocando Calendário...  </h2>";
-            await laco(1);
-            mensagem.innerHTML = "Calendário " + (cont+1) + " de 5";
-            calendario.innerHTML = array_calendario[cont];  
-    }else if (cont == 5){
-        if (dia == 0){
-            calendario.innerHTML = " <h2> Erro: Você não escolheu nenhum calendário </h2>";
-        }else {
-            cont=0;
-            // calendario.innerHTML = " <h2> O dia do seu aniversário é " + dia + "</h2>";
-            calendario.className = "Calendario2";
-            calendario.innerHTML = "";
-            mensagem0.innerHTML = "";
-            mensagem.innerHTML = "<h2> Pegue uma calculadora </h2>";
-            bt.innerHTML = "<button class='btn'  onclick='passos()'> Próximo </button>";
-            passos();    
+    if (clique_permitido){
+        if (resposta){
+            dia += array_soma[cont];    
         }
-           
-    }
+        cont++;
+        if (cont < 5){        
+                calendario.innerHTML = " <h2>  Trocando Calendário...  </h2>";
+                clique_permitido = false;
+                await laco(1);
+                mensagem.innerHTML = "Calendário " + (cont+1) + " de 5";
+                calendario.innerHTML = array_calendario[cont];
+                clique_permitido = true;  
+        }else if (cont == 5){
+            if (dia == 0){
+                calendario.innerHTML = " <h2> Erro: Você não escolheu nenhum calendário </h2>";
+            }else {
+                cont=0;
+                // calendario.innerHTML = " <h2> O dia do seu aniversário é " + dia + "</h2>";
+                calendario.className = "Calendario2";
+                calendario.innerHTML = "";
+                mensagem0.innerHTML = "";
+                mensagem.innerHTML = "<h2> Pegue uma calculadora </h2>";
+                calendario.innerHTML += '<h2> Agora, pegue uma calculadora, será importante </h2>';
+                bt.innerHTML = "<button class='btn'  onclick='passos()'> Próximo </button>";
+                passos();
+            }
+            
+        }
+    } 
 }
 
 var valor=0;
@@ -267,11 +273,13 @@ function calcula(soma_a_idade){
                 'setembro', 'outubro', 'novembro', 'dezembro'];
     let idade = valor_final.slice(valor_final.length/2, valor_final.length);
     if (soma_a_idade){ // caso a pessoa não tenha feito aniversário soma uma unidade
-        idade += soma_a_idade;
+        idade++;
     }
     let mes = valor_final.slice(0,valor_final.length/2);
     mensagem.innerHTML = "<h2> A sua data de aniversário é </h2>";
     calendario.innerHTML = "<h1 style='font-size= 100px'>" + dia + " de " + meses[mes-1] + " de " + (ano_atual - idade) + "</h1>";
+    let body = document.querySelector("body");
+    body.innerHTML += '<footer> <input type="button" value="Voltar para o início" id="canal" onClick="window.location.reload()"> </footer>';
 }
 
 

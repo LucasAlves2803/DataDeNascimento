@@ -1,13 +1,6 @@
 
 
 var calendario2 = ` 
-<p class="dia">Seg</p>
-<p class="dia">Ter</p>
-<p class="dia">Qua</p>
-<p class="dia">Qui</p>
-<p class="dia">Sex</p>
-<p class="dia">Sab</p>
-<p class="dia">Dom</p> 
 <p></p>
 <p ></p>
 <p>1</p>
@@ -44,13 +37,7 @@ var calendario2 = `
 <p></p>
 <p></p>`;
 
-var calendario3 = ` <p class="dia">Seg</p>
-<p class="dia">Ter</p>
-<p class="dia">Qua</p>
-<p class="dia">Qui</p>
-<p class="dia">Sex</p>
-<p class="dia">Sab</p>
-<p class="dia">Dom</p> 
+var calendario3 = ` 
 <p></p>
 <p ></p>
 <p>1</p>
@@ -89,13 +76,7 @@ var calendario3 = ` <p class="dia">Seg</p>
 
 // comentário aleatório
 
-var calendario4 = `<p class="dia">Seg</p>
-<p class="dia">Ter</p>
-<p class="dia">Qua</p>
-<p class="dia">Qui</p>
-<p class="dia">Sex</p>
-<p class="dia">Sab</p>
-<p class="dia">Dom</p> 
+var calendario4 = `
 <p></p>
 <p ></p>
 <p>1</p>
@@ -132,15 +113,9 @@ var calendario4 = `<p class="dia">Seg</p>
 <p></p>
 <p></p>`;
 
-var calendario5 = ` <p class="dia">Seg</p>
-        <p class="dia">Ter</p>
-        <p class="dia">Qua</p>
-        <p class="dia">Qui</p>
-        <p class="dia">Sex</p>
-        <p class="dia">Sab</p>
-        <p class="dia">Dom</p> 
+var calendario5 = ` 
         <p></p>
-        <p ></p>
+        <p></p>
         <p>1</p>
         <p>2</p>
         <p>3</p>
@@ -282,37 +257,12 @@ function calcula(soma_a_idade){
     body.innerHTML += '<footer> <input type="button" value="Voltar para o início" id="canal" onClick="window.location.reload()"> </footer>';
 }
 
+document.addEventListener("keydown", function(e) {
+    if(e.keyCode === 13) {
+          
+      e.preventDefault();
+        
+    }
+  });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+  

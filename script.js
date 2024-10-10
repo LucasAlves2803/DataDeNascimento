@@ -242,7 +242,8 @@ function passos(){
 
 function calcula(soma_a_idade){
     valor = valor - 250;
-    const ano_atual = 2022;
+    const date = new Date();            
+    const ano_atual = date.getFullYear();
     let valor_final = String(valor);
     meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto',
                 'setembro', 'outubro', 'novembro', 'dezembro'];
